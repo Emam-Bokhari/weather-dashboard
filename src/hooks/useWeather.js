@@ -44,10 +44,10 @@ const useWeather = () => {
                 ...weatherData,
                 location: data?.name,
                 climate: data?.weather[0]?.main,
-                temprature: data?.temp,
-                maxTemprature: data?.temp_max,
-                minTemprature: data?.temp_min,
-                humidity: data?.humidity,
+                temprature: data?.main?.temp,
+                maxTemprature: data?.main?.temp_max,
+                minTemprature: data?.main?.temp_min,
+                humidity: data?.main?.humidity,
                 cloudPercentage: data?.clouds?.all,
                 wind: data?.wind?.speed,
                 time: data?.dt,
@@ -58,7 +58,7 @@ const useWeather = () => {
             setWeatherData(updateWeatherData)
 
         } catch (err) {
-            setError(error)
+            setError(err)
         } finally {
             setLoading({
                 ...loading,
